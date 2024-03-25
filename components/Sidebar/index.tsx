@@ -3,6 +3,7 @@ import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper, Typography, colors } from '@mui/material';
 import Animate from '@/common/Animate';
+import useAuth from '@/hooks/useAuth';
 
 interface MenuItemProps {
     item: {
@@ -14,7 +15,7 @@ interface MenuItemProps {
     onTabClick: (tabname: string) => void
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ item, isActive, onTabClick }) => {
+const MenuItem = ({ item, isActive, onTabClick }: MenuItemProps) => {
     const handleClick = () => {
         onTabClick(item.state);
     };
@@ -60,6 +61,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ sidebarWidth, activeTab, onTabClick }: SidebarProps) => {
+    const { user, logout } = useAuth()
     const menus = [
         {
             title: "Actual Data",
@@ -110,21 +112,48 @@ const Sidebar = ({ sidebarWidth, activeTab, onTabClick }: SidebarProps) => {
                     display="flex"
                     flexDirection="column"
                     height="100vh"
+                    gap={1}
                     sx={{
                         "::-webkit-scrollbar": {
                             display: "none"
                         }
                     }}
                 >
-                    {/* logo */}
-                    <Box sx={{ textAlign: "center", mb: 2 }}>
-                        <Animate type="fade" delay={1}>
-                            <img src='./images/logo.png' alt="logo" height={60} />
-                        </Animate>
-                    </Box>
-                    {/* logo */}
+                    <Animate type="fade" delay={1}>
 
-                    {/* <Animate sx={{ flexGrow: 1 }}> */}
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-around",
+                                backgroundColor: "white",
+                                borderRadius: "10px",
+                                padding: "10px",
+                                maxWidth: sidebarWidth,
+                                margin: "auto",
+                                cursor: "pointer",
+                            }}
+                            onClick={logout}
+                        >
+                            <span
+                                style={{
+                                    color: "black",
+                                    fontWeight: 600,
+                                    marginRight: "10px",
+                                }}
+                            >
+                                {user?.email?.split("@")[0]}
+                            </span>
+                            <img
+                                src="./images/bg.jpg"
+                                alt="logo"
+                                height={50}
+                                style={{
+                                    borderRadius: "25%",
+                                }}
+                            />
+                        </Box>
+                    </Animate>
                     <Animate sx={{ flexGrow: 1 }}>
                         <Paper
                             elevation={0}

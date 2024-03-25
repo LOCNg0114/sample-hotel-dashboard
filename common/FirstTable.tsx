@@ -199,7 +199,7 @@ const NestedTableCustom = ({ data }: any) => {
         setExpandedRows(prevState => [...prevState, index, nextIndex])
     };
 
-    console.log({ expandedRows })
+    // console.log({ expandedRows })
     return (
         <TableContainer>
             <Table>

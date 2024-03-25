@@ -68,7 +68,6 @@ const LineChart = ({ data, width, height }: LineChartProps) => {
 
             const index = Math.floor(x0.getTime());
             const d = data[index];
-            console.log({ d })
 
             if (d) {
                 showTooltip({

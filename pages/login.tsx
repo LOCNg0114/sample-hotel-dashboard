@@ -8,7 +8,6 @@ const LoginPage = () => {
     const [loginRequest, setLoginRequest] = useState(false);
     const [loginProgress, setLoginProgress] = useState(0);
 
-    console.log({ authLoading })
     const handleLoginSubmit = async (data: { username: string; password: string }) => {
         setLoginRequest(true);
         const interval = setInterval(() => {
