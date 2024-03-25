@@ -34,19 +34,6 @@ const LoginPage = () => {
                 "::-webkit-scrollbar": { display: "none" }
             }}
         >
-            {/* background box */}
-            <Box sx={{
-                position: "absolute",
-                right: 0,
-                height: "100%",
-                width: "70%",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundImage: `images/bg-library.jpeg`
-            }} />
-            {/* background box */}
-            {/* Your background box and other elements */}
             <LoginForm
                 onSubmit={handleLoginSubmit}
                 onRequest={loginRequest}
