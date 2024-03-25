@@ -52,7 +52,7 @@ const LoginPage = () => {
                 onRequest={loginRequest}
                 loginProgress={loginProgress}
             />
-            {authLoading && (
+            {/* {authLoading && (
                 <Stack
                     alignItems="center"
                     justifyContent="center"
@@ -88,7 +88,7 @@ const LoginPage = () => {
                         />
                     </Box>
                 </Stack>
-            )}
+            )} */}
         </Box>
     );
 };
