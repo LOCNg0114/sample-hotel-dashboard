@@ -1,113 +1,4 @@
-// import { useCallback } from "react"
-// import { Group } from "@visx/group";
-// import { scaleLinear, scaleTime } from '@visx/scale';
-// import { AxisLeft, AxisBottom } from '@visx/axis';
-// import { Line, LinePath } from "@visx/shape";
-// import { extent, bisector } from 'd3-array';
-// import { LinearGradient } from '@visx/gradient';
-// import { GridRows, GridColumns } from '@visx/grid';
-// import { useTooltip, TooltipWithBounds, defaultStyles } from '@visx/tooltip';
-// import { localPoint } from '@visx/event';
-// import { GlyphCircle } from '@visx/glyph';
-// import { lineChartData } from "./data/actualData";
-// import React from 'react';
-
-// interface DataPoint {
-//     Date: string;
-//     [key: string]: number | string;
-// }
-
-// interface DateLineChartProps {
-//     data: DataPoint[];
-//     width: number;
-//     height: number;
-// }
-
-// const LineChart = (
-//     { data, width, height }: DateLineChartProps
-// ) => {
-//     //tooltip parameters
-//     const {
-//         tooltipData,
-//         tooltipLeft = 0,
-//         tooltipTop = 0,
-//         showTooltip,
-//         hideTooltip
-//     } = useTooltip();
-
-//     // define margins 
-//     const margins = {
-//         top: 40,
-//         right: 40,
-//         bottom: 40,
-//         left: 40
-//     };
-
-//     const formatData = data.map(d => ({
-//         Date: d.Date,
-//         "Total Occ.": +d["Total Occ."],
-//         "Arr. Rooms": +d["Arr. Rooms"],
-//         "Dep. Rooms": +d["Dep. Rooms"]
-//     }));
-
-//     console.log({ formatData })
-//     // const data1 = dateData.filter(function(el) {
-//     //     return el.
-//     // })
-//     // define inner measurements
-//     const innerWidth = width - margins.left - margins.right;
-//     const innerHeight = height - margins.top - margins.bottom;
-
-//     //colors for lines
-//     const colors = ['#43b284', '#fab255', '#3477eb']
-
-//     //define scales
-//     // horizontal, x-scale
-//     const timeScale = scaleTime({
-//         range: [0, innerWidth],
-//         domain: extent(formatData, d => new Date(d.Date)) as [Date, Date],
-//     });
-
-//     // vertical, y-scale
-//     const valueScale = scaleLinear({
-//         range: [innerHeight, 0],
-//         domain: [0, Math.max(...formatData.map((d: any) => +d['Total Occ.']))]
-//     })
-//     const lineKeys = ['Total Occ.', 'Arr. Rooms', 'Dep. Rooms'];
-
-//     return (
-//         <svg width={width} height={height}>
-//             <Group left={margins.left} top={margins.top}>
-//                 <AxisLeft
-//                     scale={valueScale}
-//                     numTicks={5}
-//                     tickFormat={tickValue => `${tickValue}`}
-//                 />
-//                 <AxisBottom
-//                     scale={timeScale}
-//                     top={innerHeight}
-//                     numTicks={5}
-//                     tickFormat={date => new Date(date).toLocaleDateString()}
-//                 />
-//                 {lineKeys.map((key: string, index: number) => (
-//                     <LinePath
-//                         key={key}
-//                         data={formatData}
-//                         x={d => timeScale(new Date(d.Date)) ?? 0}
-//                         y={d => valueScale(+d[key]) ?? 0}
-//                         stroke={colors[index]}
-//                         strokeWidth={2}
-//                     />
-//                 ))}
-//             </Group>
-//         </svg>
-//     )
-// }
-
-// export default LineChart
-
 import React, { useCallback, TouchEvent, MouseEvent } from "react";
-// import { TouchEvent, MouseEvent } from "react";
 import { Group } from "@visx/group";
 import { scaleLinear, scaleTime } from "@visx/scale";
 import { AxisLeft, AxisBottom } from "@visx/axis";
@@ -150,7 +41,7 @@ const LineChart = ({ data, width, height }: LineChartProps) => {
         "Dep. Rooms": +d["Dep. Rooms"]
     }));
 
-    
+
     // Defining scales
     const dateScale = scaleTime({
         range: [0, innerWidth],
@@ -177,7 +68,7 @@ const LineChart = ({ data, width, height }: LineChartProps) => {
 
             const index = Math.floor(x0.getTime());
             const d = data[index];
-            console.log({d})
+            console.log({ d })
 
             if (d) {
                 showTooltip({
